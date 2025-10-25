@@ -16,6 +16,12 @@ export const config = [
   {
     plugins: {
       turbo: turboPlugin,
+      rules: {
+        "@typescript-eslint/no-unused-vars": [
+          "off",
+          { argsIgnorePattern: "^_" },
+        ],
+      },
     },
     rules: {
       "turbo/no-undeclared-env-vars": "warn",
