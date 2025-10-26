@@ -7,7 +7,7 @@ export default async function Home() {
   const data = await sanityClient.fetch<HomeDoc | undefined>(
     groq`*[_type=="home"][0]{ hero{ ... } }`,
     {},
-    { cache: "force-cache", next: { tags: ["sanity"] } },
+    //{ cache: "force-cache", next: { tags: ["sanity"] } },
   );
 
   console.log("data", data?.hero);
