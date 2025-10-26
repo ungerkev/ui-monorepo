@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   }
 
   revalidateTag("sanity", { expire: 0 });
-  revalidatePath("/");
+  //revalidatePath("/");
 
   return Response.json({ revalidated: true });
 }

@@ -4,18 +4,19 @@ import { sanityClient } from "@/sanity/lib/sanityClient";
 import { HomeDoc } from "@/sanity/types";
 import { sanityFetch } from "@/sanity/lib/live";
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const data = await sanityClient.fetch<HomeDoc | undefined>(
+  /*const data = await sanityClient.fetch<HomeDoc | undefined>(
     groq`*[_type=="home"][0]{ hero{ ... } }`,
     {},
     { cache: "force-cache", next: { tags: ["sanity"] } },
-  );
+  );*/
 
-  /*const { data } = await sanityFetch({
+  const { data } = await sanityFetch({
     query: groq`*[_type=="home"][0]{ hero{ ... } }`,
-  });*/
+    tags: ["sanity"],
+  });
 
   console.log("data", data?.hero);
 
