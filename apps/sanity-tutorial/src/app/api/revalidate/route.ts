@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
   }
 
   revalidateTag("sanity", { expire: 0 });
+  revalidatePath("/");
 
   return Response.json({ revalidated: true });
 }
