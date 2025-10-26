@@ -4,6 +4,8 @@ import { sanityClient } from "@/sanity/lib/sanityClient";
 import { HomeDoc } from "@/sanity/types";
 import { sanityFetch } from "@/sanity/lib/live";
 
+export const revalidate = 0;
+
 export default async function Home() {
   /*const data = await sanityClient.fetch<HomeDoc | undefined>(
     groq`*[_type=="home"][0]{ hero{ ... } }`,
