@@ -2,14 +2,18 @@ import { Test } from "@repo/shared/ui/test";
 import groq from "groq";
 import { sanityClient } from "@/sanity/lib/sanityClient";
 import { HomeDoc } from "@/sanity/types";
+import { cacheTag } from "next/cache";
+
+const QUERY = groq`*[_type=="home"][0]{ hero{ ... } }`;
+
+export async function getHome(): Promise<HomeDoc | null> {
+  "use cache";
+  cacheTag("sanity");
+  return sanityClient.fetch<HomeDoc | null>(QUERY);
+}
 
 export default async function Home() {
-  const QUERY = groq`*[_type=="home"][0]{ hero{ ... } }`;
-  const data = await sanityClient.fetch<HomeDoc | undefined>(
-    QUERY,
-    {},
-    { cache: "force-cache", next: { tags: ["sanity"] } },
-  );
+  const data = await getHome();
 
   console.log("data", data?.hero);
 
