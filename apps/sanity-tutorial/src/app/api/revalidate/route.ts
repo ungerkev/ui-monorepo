@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     return new Response("Invalid secret", { status: 401 });
   }
 
-  revalidateTag("sanity", "seconds");
+  revalidateTag("sanity", { expire: 0 });
 
   return Response.json({ revalidated: true });
 }
