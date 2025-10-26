@@ -1,8 +1,8 @@
-import { defineType, defineField } from "sanity";
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: "home",
-  title: "Startseite",
-  type: "document",
-  fields: [defineField({ name: "hero", title: "Hero", type: "heroSection" })],
+  name: 'home',
+  title: 'Startseite',
+  type: 'document',
+  fields: [defineField({ name: 'hero', title: 'Hero', type: 'heroSection' })],
 });
