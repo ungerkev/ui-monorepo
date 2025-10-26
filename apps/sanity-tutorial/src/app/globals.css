@@ -3,8 +3,6 @@
 
 @import "@repo/shared/tailwind.sources.css";
 
-@source ".";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
