@@ -13,7 +13,6 @@ export default async function Home() {
 
   const { data } = await sanityFetch({
     query: groq`*[_type=="home"][0]{ hero{ ... } }`,
-    tags: ["sanity"],
   });
 
   console.log("data", data?.hero);
