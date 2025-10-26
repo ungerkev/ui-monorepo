@@ -15,6 +15,10 @@ export default async function Home() {
 
   return (
     <>
+      <div className="flex gap-1.5">
+        <h1>Headline: </h1>
+        <span className="font-bold">{data?.hero?.headline}</span>
+      </div>
       <Test />
     </>
   );
